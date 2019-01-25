@@ -1,3 +1,7 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 
-docker build --build-arg BASE_TAG=${DOCKER_TAG} -t ${IMAGE_NAME} .
+if [[ $DOCKER_TAG = 'latest' ]]; then
+    DOCKER_TAG='ubuntu-18.04'
+fi
+
+docker build --build-arg BASE_TAG=${DOCKER_TAG//ubuntu-} -t ${IMAGE_NAME} .
