@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+set -eu
 
 if [[ $DOCKER_TAG = 'latest' ]]; then
     DOCKER_TAG='ubuntu18.04'
