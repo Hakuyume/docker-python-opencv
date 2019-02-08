@@ -8,16 +8,16 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     g++ \
     make \
     python-dev \
-    python-pip \
-    python-setuptools \
     python3-dev \
-    python3-pip \
-    python3-setuptools \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip2 install --no-cache-dir numpy
-RUN pip3 install --no-cache-dir numpy
+RUN curl -LO https://bootstrap.pypa.io/get-pip.py \
+    && python2 get-pip.py  \
+    && python3 get-pip.py
+
+RUN pip2 install --no-cache-dir numpy \
+    && pip3 install --no-cache-dir numpy
 
 RUN cd $(mktemp -d) \
     && curl -L https://github.com/opencv/opencv/archive/3.4.1.tar.gz | tar zxf - \
