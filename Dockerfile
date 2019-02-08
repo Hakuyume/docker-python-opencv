@@ -13,8 +13,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -LO https://bootstrap.pypa.io/get-pip.py \
-    && python2 get-pip.py  \
-    && python3 get-pip.py
+    && python2 get-pip.py --no-cache-dir \
+    && python3 get-pip.py --no-cache-dir \
+    && rm get-pip.py
 
 RUN pip2 install --no-cache-dir numpy \
     && pip3 install --no-cache-dir numpy
