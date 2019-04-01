@@ -48,7 +48,7 @@ RUN cd $(mktemp -d) \
     -DBUILD_opencv_videostab=OFF \
     && make -j $(nproc) \
     && make install \
-    && rm -rf /tmp/*
+    && rm -rf $(pwd)
 
 RUN echo /usr/local/lib/ > /etc/ld.so.conf.d/local.conf \
     && ldconfig
